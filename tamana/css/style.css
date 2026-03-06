@@ -1,0 +1,521 @@
+/* style.css - Main styles for Antigravity Astrology */
+:root {
+    /* Color Palette - Dark Luxury Cosmic */
+    --bg-deep-space: #07060e; /* Softer, richer dark navy/black */
+    --bg-void: #030206;
+    --primary-glow: #7b4397; /* Elegant muted purple */
+    --secondary-glow: #5e35b1;
+    --accent-teal: #4dd0e1; /* Softer cyan/teal */
+    --accent-pink: #d81b60; /* Ruby/Rose tone instead of neon pink */
+    --gold-highlight: #d4af37; /* Premium gold touch */
+    --text-primary: #f5f5f7;
+    --text-muted: #9aa0a6;
+    --glass-bg: rgba(255, 255, 255, 0.02);
+    --glass-border: rgba(255, 255, 255, 0.06);
+    
+    /* Typography */
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--bg-deep-space);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Background Canvas */
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: radial-gradient(circle at center, var(--bg-deep-space) 0%, var(--bg-void) 100%);
+}
+
+/* Typography & General */
+h1, h2, h3, h4, .logo {
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 5rem); }
+h2 { font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1rem; }
+h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+a { text-decoration: none; color: inherit; }
+.highlight { 
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(90deg, var(--accent-teal), var(--primary-glow));
+}
+
+/* Glassmorphism utility */
+.glassmorphism {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+.navbar.scrolled {
+    background: rgba(5, 5, 8, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 1rem 5%;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent-teal);
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+.nav-links li a {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+.nav-links li a:hover {
+    color: var(--accent-teal);
+}
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, var(--accent-teal), var(--primary-glow));
+    transition: width 0.3s;
+}
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+.hamburger { display: none; cursor: pointer; }
+.bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: var(--text-primary); transition: all 0.3s; }
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 8px; /* More professional than full pill */
+    font-family: var(--font-heading);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.9rem;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+    color: white;
+    box-shadow: 0 4px 15px rgba(123, 67, 151, 0.3);
+}
+.primary-btn:hover {
+    box-shadow: 0 6px 20px rgba(123, 67, 151, 0.5);
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(5px);
+}
+.secondary-btn:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: var(--text-primary);
+}
+
+/* Sections */
+.section {
+    padding: 8rem 5% 4rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+.section-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+.section-header p {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 1rem auto 0;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    position: relative;
+    overflow: hidden;
+}
+.hero-content {
+    flex: 1;
+    z-index: 10;
+    max-width: 600px;
+}
+.hero-content h1 {
+    font-size: clamp(3rem, 6vw, 6rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -1px;
+    color: var(--text-primary);
+}
+.hero-content .subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.5px;
+}
+.cta-group {
+    display: flex;
+    gap: 1.5rem;
+}
+.hero-visual {
+    flex: 1;
+    position: absolute;
+    right: -10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60vw;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+}
+#solar-system-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* About Grid */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+.about-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+.about-visual {
+    height: 400px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(123, 67, 151, 0.1), rgba(77, 208, 225, 0.05));
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+}
+.nebula-placeholder {
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1543722530-d2c3201371e7?w=800&q=80');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6;
+    mix-blend-mode: screen;
+}
+
+/* Cards Grid */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+.force-card {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+.force-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+.planet-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    position: relative;
+}
+.planet-icon.sun { background: radial-gradient(circle at 30% 30%, #e6cd7c, #b39130); box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); }
+.planet-icon.moon { background: radial-gradient(circle at 30% 30%, #d4d4dc, #8a8a92); box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); }
+.planet-icon.jupiter { background: radial-gradient(circle at 30% 30%, #c4a484, #795548); box-shadow: 0 0 15px rgba(121, 85, 72, 0.15); }
+.planet-icon.saturn { background: radial-gradient(circle at 30% 30%, #e8e3c8, #9e918b); box-shadow: 0 0 15px rgba(158, 145, 139, 0.15); }
+.force-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Astrology Charts area */
+.chart-container {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#zodiac-wheel-app {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    position: relative;
+    background: radial-gradient(circle, rgba(123,67,151,0.05) 0%, rgba(0,0,0,0) 70%);
+}
+
+/* Research Split */
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+.glass-panel {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 3rem;
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+    transition: all 0.4s;
+}
+.glass-panel:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+}
+.tag {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 4px;
+    background: rgba(123, 67, 151, 0.1);
+    color: var(--gold-highlight);
+    margin-bottom: 1rem;
+}
+.read-more {
+    color: var(--accent-teal);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    display: inline-block;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+}
+.read-more:hover {
+    border-color: var(--accent-teal);
+}
+
+/* Blog Grid */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.blog-post {
+    overflow: hidden;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+.blog-post:hover {
+    transform: translateY(-5px);
+}
+.post-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+.bg-nebula-1 { background-image: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=600&q=80'); }
+.bg-nebula-2 { background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80'); }
+.bg-nebula-3 { background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&q=80'); }
+
+.post-content {
+    padding: 1.5rem;
+}
+.date {
+    font-size: 0.8rem;
+    color: var(--accent-pink);
+    font-family: var(--font-heading);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.post-content h3 { font-size: 1.25rem; }
+.post-content p { color: var(--text-muted); font-size: 0.9rem; }
+
+/* Contact Section */
+.contact-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+}
+.contact-info {
+    padding: 4rem;
+    background: rgba(0, 0, 0, 0.4);
+}
+.contact-form {
+    padding: 4rem;
+}
+.contact-details {
+    list-style: none;
+    margin-top: 2rem;
+}
+.contact-details li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-muted);
+}
+.input-group { margin-bottom: 1.5rem; }
+.input-group input, .input-group select, .input-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: #fff;
+    font-family: var(--font-body);
+    transition: border-color 0.3s, background 0.3s;
+}
+.input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-teal);
+    background: rgba(255,255,255,0.1);
+}
+.submit-btn {
+    width: 100%;
+}
+
+/* Footer */
+.glass-footer {
+    padding: 2rem 5%;
+    border-top: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+}
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+.social-links a {
+    margin-left: 1.5rem;
+    transition: color 0.3s;
+}
+.social-links a:hover {
+    color: var(--accent-teal);
+}
+
+/* Scroll Reveals */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+    .about-grid, .split-layout, .contact-box {
+        grid-template-columns: 1fr;
+    }
+    .hero-visual { right: -30%; opacity: 0.5; pointer-events: none; }
+    .hero-content { background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 16px; backdrop-filter: blur(5px); }
+}
+
+@media (max-width: 768px) {
+    .hamburger { display: block; }
+    .nav-links {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: rgba(5, 5, 8, 0.95);
+        width: 100%;
+        height: calc(100vh - 70px);
+        text-align: center;
+        transition: 0.3s;
+        padding-top: 2rem;
+        backdrop-filter: blur(10px);
+    }
+    .nav-links.active { left: 0; }
+    .nav-links li { margin: 1.5rem 0; }
+    .cta-group { flex-direction: column; }
+    .contact-info, .contact-form { padding: 2rem; }
+    .footer-content { flex-direction: column; gap: 1rem; text-align: center; }
+}
