@@ -231,6 +231,23 @@
             </div>
         </div>
     </footer>
+    <!-- Chatbot UI -->
+    <div class="chatbot-container">
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <h3>Aethera AI Oracle</h3>
+                <button class="close-chat" id="closeChat">×</button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be injected here via JS -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Ask the cosmic oracle..." autocomplete="off">
+                <button id="sendChat">➤</button>
+            </div>
+        </div>
+        <button class="chatbot-toggle" id="chatToggle">✧</button>
+    </div>
 
     <!-- Scripts -->
     <script src="js/particles.js"></script>

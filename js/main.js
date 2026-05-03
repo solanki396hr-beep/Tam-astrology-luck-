@@ -75,4 +75,105 @@ document.addEventListener('DOMContentLoaded', () => {
             el.classList.add('float-anim-alt');
         }
     });
+
+    // 6. Professional AI Chatbot (Aethera Oracle)
+    const chatToggle = document.getElementById('chatToggle');
+    const chatWindow = document.getElementById('chatWindow');
+    const closeChat = document.getElementById('closeChat');
+    const chatMessages = document.getElementById('chatMessages');
+    const chatInput = document.getElementById('chatInput');
+    const sendChat = document.getElementById('sendChat');
+
+    if (chatToggle && chatWindow) {
+        let isChatOpen = false;
+        
+        // Chatbot State Machine
+        let chatState = 'INIT';
+        const userData = {
+            name: '',
+            dob: '',
+            birthplace: ''
+        };
+
+        const addMessage = (text, isBot = true) => {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${isBot ? 'bot-message' : 'user-message'}`;
+            msgDiv.textContent = text;
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        };
+
+        const handleChatState = (input) => {
+            switch(chatState) {
+                case 'INIT':
+                    addMessage("Greetings, traveler of the cosmos. I am the Aethera Oracle. To calculate your gravity nodes, may I first have your name?");
+                    chatState = 'AWAITING_NAME';
+                    break;
+                case 'AWAITING_NAME':
+                    if(input.trim() === '') return;
+                    userData.name = input.trim();
+                    addMessage(`Welcome, ${userData.name}. A strong energetic signature. Please provide your Date of Birth (e.g., DD/MM/YYYY) so I can align the planetary frequencies.`);
+                    chatState = 'AWAITING_DOB';
+                    break;
+                case 'AWAITING_DOB':
+                    if(input.trim() === '') return;
+                    userData.dob = input.trim();
+                    addMessage("Fascinating alignment. Lastly, what is your Place of Birth (City, Country)? This helps calculate the localized spatial gravitational pull at the time of your incarnation.");
+                    chatState = 'AWAITING_BIRTHPLACE';
+                    break;
+                case 'AWAITING_BIRTHPLACE':
+                    if(input.trim() === '') return;
+                    userData.birthplace = input.trim();
+                    addMessage("Calculating quantum entanglement and planetary mass resonance...");
+                    chatState = 'ANALYZING';
+                    
+                    setTimeout(() => {
+                        addMessage(`Analysis complete, ${userData.name}. Based on your birth coordinates in ${userData.birthplace} on ${userData.dob}, your core Anti-Gravity Node resides in Jupiter's expansion field. You naturally emit a frequency that dissolves obstacles and bends probabilities in your favor. Would you like a deeper reading on specific cosmic influences?`);
+                        chatState = 'GENERAL_READING';
+                    }, 2000);
+                    break;
+                case 'GENERAL_READING':
+                    if(input.trim() === '') return;
+                    addMessage("The cosmic strings are shifting. I sense a strong retrograde anomaly approaching your sector. Stay grounded. I am always here if you require further localized quantum insight.");
+                    // Reset or stay in conversation
+                    chatState = 'GENERAL_READING';
+                    break;
+            }
+        };
+
+        const sendMessage = () => {
+            const text = chatInput.value;
+            if (text.trim() === '') return;
+            
+            addMessage(text, false);
+            chatInput.value = '';
+            
+            // Artificial delay for bot thinking
+            setTimeout(() => {
+                handleChatState(text);
+            }, 600);
+        };
+
+        chatToggle.addEventListener('click', () => {
+            isChatOpen = true;
+            chatWindow.classList.add('active');
+            chatToggle.style.transform = 'scale(0)';
+            
+            // Init chat if empty
+            if (chatMessages.children.length === 0) {
+                setTimeout(() => handleChatState(''), 500);
+            }
+        });
+
+        closeChat.addEventListener('click', () => {
+            isChatOpen = false;
+            chatWindow.classList.remove('active');
+            chatToggle.style.transform = 'scale(1)';
+        });
+
+        sendChat.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+    }
 });
