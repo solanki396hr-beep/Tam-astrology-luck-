@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Antigravity Astrology: The cosmic intersection of energy, planetary motion, and science.">
+    <meta name="keywords" content="cosmic energy, astrology science, antigravity theory, astrology, astronomy, planetary forces">
+    <title>Antigravity Astrology - The Cosmic Force</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- Background Particles Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-icon">&#10022;</span> Aethera
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#forces">Planets & Forces</a></li>
+                <li><a href="#charts">Astrology Charts</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="elegant-fade">Antigravity Astrology</h1>
+                <p class="subtitle elegant-fade-delay">Where Cosmic Energy Meets Theoretical Physics</p>
+                <div class="cta-group">
+                    <a href="#about" class="btn primary-btn">Explore The Cosmos</a>
+                    <a href="#charts" class="btn secondary-btn">View Zodiac Chart</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <!-- Interactive Solar System visualization container -->
+                <div id="solar-system-container"></div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section reveal">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Cosmic Energy <span class="highlight">&</span> Antigravity</h2>
+                </div>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>For millennia, humanity has looked to the stars to understand our place in the universe. Antigravity Astrology blends ancient esoteric traditions with cutting-edge theoretical physics, proposing that planetary bodies emit specific energetic frequencies that influence not just human consciousness, but gravitational fields themselves.</p>
+                        <p>We explore the hypothesis that celestial alignments create 'gravity-wells' and 'anti-gravity nodes' through the resonance of universal energy strings.</p>
+                    </div>
+                    <div class="about-visual glow-box">
+                        <div class="nebula-placeholder"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Planets & Forces Section -->
+        <section id="forces" class="section reveal dark-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Planetary <span class="highlight">Forces</span></h2>
+                    <p>How each celestial body manipulates energetic fields</p>
+                </div>
+                <div class="cards-grid">
+                    <!-- Cards will be populated dynamically or static -->
+                    <div class="force-card glassmorphism">
+                        <div class="planet-icon sun"></div>
+                        <h3>The Sun</h3>
+                        <p>Core gravity anchor. Emits pure life-force radiation that stabilizes the planetary resonance network.</p>
+                    </div>
+                    <div class="force-card glassmorphism">
+                        <div class="planet-icon moon"></div>
+                        <h3>The Moon</h3>
+                        <p>Tidal manipulator. Controls the ebb and flow of emotional and localized gravitational micro-fluctuations.</p>
+                    </div>
+                    <div class="force-card glassmorphism">
+                        <div class="planet-icon jupiter"></div>
+                        <h3>Jupiter</h3>
+                        <p>Expansion field generator. Radiates broad-spectrum anti-gravity waves that push boundaries of consciousness.</p>
+                    </div>
+                    <div class="force-card glassmorphism">
+                        <div class="planet-icon saturn"></div>
+                        <h3>Saturn</h3>
+                        <p>Contraction node. Dense rings act as crystalline focused gravity beams, solidifying matter and structure.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Astrology Charts Section -->
+        <section id="charts" class="section reveal">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Interactive <span class="highlight">Zodiac Wheel</span></h2>
+                    <p>Trace the energetic flow of planetary positions.</p>
+                </div>
+                <div class="chart-container">
+                    <div id="zodiac-wheel-app"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research & Theories Section -->
+        <section id="research" class="section reveal alt-bg">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Research <span class="highlight">& Teorías</span></h2>
+                </div>
+                <div class="split-layout">
+                    <div class="theory-item glass-panel">
+                        <span class="tag">Physics</span>
+                        <h3>Quantum Entanglement & Zodiac Signs</h3>
+                        <p>Examining how quantum pairs mapped along the ecliptic plane may explain immediate astrological personality traits regardless of light-speed delays.</p>
+                        <a href="#" class="read-more">Read Paper</a>
+                    </div>
+                    <div class="theory-item glass-panel">
+                        <span class="tag">Metaphysics</span>
+                        <h3>The Anti-Gravity Nodes of the 12 Houses</h3>
+                        <p>A theoretical framework on calculating points of zero-gravity potential within a natal chart based on planetary mass alignments.</p>
+                        <a href="#" class="read-more">Read Paper</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="section reveal">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Cosmic <span class="highlight">Insights</span></h2>
+                </div>
+                <div class="blog-grid mt-4">
+                    <article class="blog-post glassmorphism">
+                        <div class="post-img bg-nebula-1"></div>
+                        <div class="post-content">
+                            <span class="date">March 12, 2026</span>
+                            <h3>The Retrograde Anomaly</h3>
+                            <p>When planets appear to move backward, does their gravity field invert?</p>
+                        </div>
+                    </article>
+                    <article class="blog-post glassmorphism">
+                        <div class="post-img bg-nebula-2"></div>
+                        <div class="post-content">
+                            <span class="date">April 05, 2026</span>
+                            <h3>Harnessing Lunar Anti-Gravity</h3>
+                            <p>Techniques to sync your meditation with the new moon's lowest gravitational pull.</p>
+                        </div>
+                    </article>
+                    <article class="blog-post glassmorphism">
+                        <div class="post-img bg-nebula-3"></div>
+                        <div class="post-content">
+                            <span class="date">May 21, 2026</span>
+                            <h3>Pluto's Dark Matter Resonance</h3>
+                            <p>Why the dwarf planet still holds the most mysterious energetic frequency.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section reveal dark-section">
+            <div class="section-container">
+                <div class="contact-box glassmorphism">
+                    <div class="contact-info">
+                        <h2>Join The <span class="highlight">Community</span></h2>
+                        <p>Ask questions about cosmic mechanics or discuss theoretical astrology with fellow star-travelers.</p>
+                        <ul class="contact-details">
+                            <li><span class="icon">&#9993;</span> transmissions@aethera.cosmic</li>
+                            <li><span class="icon">&#10022;</span> Sector 4, Orion Arm</li>
+                        </ul>
+                    </div>
+                    <div class="contact-form">
+                        <form id="communityForm">
+                            <div class="input-group">
+                                <input type="text" id="name" required placeholder="Cosmic Identity">
+                            </div>
+                            <div class="input-group">
+                                <input type="email" id="email" required placeholder="Transmission Link (Email)">
+                            </div>
+                            <div class="input-group">
+                                <select id="topic">
+                                    <option value="general">General Discussion</option>
+                                    <option value="research">Research Inquiry</option>
+                                    <option value="chart">Chart Calculation Help</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <textarea id="message" rows="5" required placeholder="Your message to the stars..."></textarea>
+                            </div>
+                            <button type="submit" class="btn primary-btn submit-btn">Transmit Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="glass-footer">
+        <div class="footer-content">
+            <div class="logo"><span class="logo-icon">&#10022;</span> Aethera</div>
+            <p>&copy; 2026 Aethera Antigravity Astrology. All cosmic rights reserved.</p>
+            <div class="social-links">
+                <a href="#">X</a>
+                <a href="#">IG</a>
+                <a href="#">YT</a>
+            </div>
+        </div>
+    </footer>
+    <!-- Chatbot UI -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="bot-avatar">
+                        <div class="avatar-glow"></div>
+                        <span>✦</span>
+                    </div>
+                    <div>
+                        <h3>Aethera Oracle</h3>
+                        <p class="status">Online & Syncing...</p>
+                    </div>
+                </div>
+                <button class="close-chat" id="closeChat" aria-label="Close Chat">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be injected here via JS -->
+            </div>
+            <div class="chat-input-container">
+                <div class="chat-input-wrapper">
+                    <input type="text" id="chatInput" placeholder="Ask the oracle..." autocomplete="off">
+                    <button id="sendChat" class="send-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <button class="chatbot-toggle" id="chatToggle" aria-label="Open Chat">
+            <div class="toggle-icon">✦</div>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/particles.js"></script>
+    <script src="js/solar-system.js"></script>
+    <script src="js/zodiac.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
