@@ -1,138 +1,117 @@
-/* animations.css - Specifically for floating, glowing and particle animations */
+/* animations.css - Micro-animations and Keyframes */
 
-/* Elegant Title Reveal */
+/* Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Elegant Fade In (Hero) */
 .elegant-fade {
     opacity: 0;
-    transform: translateY(20px);
-    animation: fade-up 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation: fadeInTop 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 .elegant-fade-delay {
     opacity: 0;
-    transform: translateY(20px);
-    animation: fade-up 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation: fadeInTop 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     animation-delay: 0.3s;
 }
 
-@keyframes fade-up {
-    to {
+@keyframes fadeInTop {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* Floating Elements (Zero Gravity Effect) */
-@keyframes float {
-    0% {
-        transform: translateY(0px) rotate(0deg);
-    }
-
-    33% {
-        transform: translateY(-10px) rotate(2deg);
-    }
-
-    66% {
-        transform: translateY(5px) rotate(-1deg);
-    }
-
-    100% {
-        transform: translateY(0px) rotate(0deg);
-    }
-}
-
+/* Floating Elements */
 .float-anim {
-    animation: float 8s ease-in-out infinite;
+    animation: float 6s ease-in-out infinite;
 }
 
 .float-anim-alt {
-    animation: float 10s ease-in-out infinite reverse;
+    animation: floatAlt 7s ease-in-out infinite;
 }
 
-/* Glowing Pulsate Effect (Softened) */
-@keyframes pulsate-glow {
-    0% {
-        box-shadow: 0 0 5px var(--primary-glow), inset 0 0 5px var(--primary-glow);
-    }
-
-    50% {
-        box-shadow: 0 0 15px rgba(123, 67, 151, 0.4), inset 0 0 10px rgba(123, 67, 151, 0.2);
-    }
-
-    100% {
-        box-shadow: 0 0 5px var(--primary-glow), inset 0 0 5px var(--primary-glow);
-    }
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
 }
 
+@keyframes floatAlt {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Glowing Border Pulse */
 .glow-box {
-    animation: pulsate-glow 4s infinite alternate;
+    animation: glowPulse 4s infinite alternate;
 }
 
-/* Zodiac Wheel Rotation */
-@keyframes rotate-slow {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 10px rgba(0, 242, 254, 0.2); }
+    100% { box-shadow: 0 0 25px rgba(0, 242, 254, 0.6); }
 }
 
-@keyframes rotate-slow-reverse {
-    from {
-        transform: rotate(360deg);
-    }
-
-    to {
-        transform: rotate(0deg);
-    }
-}
-
-.spin-slow {
-    animation: rotate-slow 60s linear infinite;
-}
-
-.spin-slow-reverse {
-    animation: rotate-slow-reverse 45s linear infinite;
-}
-
-/* Solar System Planets Orbit Classes */
+/* Solar System 3D Orbit Animations */
 .orbit-ring {
     position: absolute;
     top: 50%;
     left: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transform: translate(-50%, -50%);
 }
 
 .planet-orbiter {
-    position: absolute;
-    top: 50%;
-    left: 50%;
     width: 100%;
     height: 100%;
-    animation: rotate-slow linear infinite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: orbit linear infinite;
+    transform-style: preserve-3d;
 }
 
 .planet-sphere {
     position: absolute;
-    top: -10px;
-    /* Half of height to center on ring */
-    left: calc(50% - 10px);
-    /* Center on top of ring */
-    width: 20px;
-    height: 20px;
+    top: -50%;
+    left: 50%;
+    margin-left: calc(-50%);
+    margin-top: calc(50%);
     border-radius: 50%;
-    box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
-/* Hover effect on cards */
-.force-card .planet-icon {
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+@keyframes orbit {
+    0% { transform: rotateZ(0deg); }
+    100% { transform: rotateZ(360deg); }
 }
 
-.force-card:hover .planet-icon {
-    transform: scale(1.05) translateY(-5px);
-    animation: pulsate-glow 3s infinite alternate;
+/* Zodiac Spin */
+.spin-slow {
+    animation: spin 60s linear infinite;
+}
+
+.spin-slow-reverse {
+    animation: spin 120s linear infinite reverse;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* Chatbot Message Animation */
+@keyframes fadeInMessage {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }

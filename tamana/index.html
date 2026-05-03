@@ -231,6 +231,40 @@
             </div>
         </div>
     </footer>
+    <!-- Chatbot UI -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="bot-avatar">
+                        <div class="avatar-glow"></div>
+                        <span>✦</span>
+                    </div>
+                    <div>
+                        <h3>Aethera Oracle</h3>
+                        <p class="status">Online & Syncing...</p>
+                    </div>
+                </div>
+                <button class="close-chat" id="closeChat" aria-label="Close Chat">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be injected here via JS -->
+            </div>
+            <div class="chat-input-container">
+                <div class="chat-input-wrapper">
+                    <input type="text" id="chatInput" placeholder="Ask the oracle..." autocomplete="off">
+                    <button id="sendChat" class="send-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <button class="chatbot-toggle" id="chatToggle" aria-label="Open Chat">
+            <div class="toggle-icon">✦</div>
+        </button>
+    </div>
 
     <!-- Scripts -->
     <script src="js/particles.js"></script>
